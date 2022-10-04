@@ -28,17 +28,14 @@ func main() {
 
 func monitor() {
 	var zyl third.ZYL
-	res, err := zyl.Monitor([]string{
-		"",
+	hit, url := zyl.Monitor([]string{
+		"2022_10_05",
 	})
-	if err != nil {
-		util.SendEmail("error")
-		log.Println(err.Error())
+	if hit {
+		msg := "有! " + url
+		util.SendEmail(msg)
+		log.Println(msg)
 		return
 	}
-	if res {
-		util.SendEmail("有!")
-		log.Println("有")
-		return
-	}
+	log.Println("无")
 }

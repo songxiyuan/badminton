@@ -3,6 +3,7 @@ package util
 import (
 	"crypto/tls"
 	"gopkg.in/gomail.v2"
+	"log"
 	"os"
 )
 
@@ -45,6 +46,7 @@ func SendEmail(msg string) {
 	d.TLSConfig = &tls.Config{InsecureSkipVerify: true}
 
 	if err := d.DialAndSend(m); err != nil {
-		panic(err)
+		log.Println(err.Error())
+		return
 	}
 }
