@@ -4,6 +4,7 @@ import (
 	"badminton/third"
 	"badminton/util"
 	"log"
+	"math/rand"
 	"os"
 	"time"
 )
@@ -18,8 +19,11 @@ func init() {
 }
 
 func main() {
-	monitor()
-	time.Sleep(time.Minute)
+	for {
+		monitor()
+		second := 50 + rand.Intn(20)
+		time.Sleep(time.Duration(second) * time.Second)
+	}
 }
 
 func monitor() {
